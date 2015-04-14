@@ -19,6 +19,11 @@ configure_file (
 include_directories ("${PROJECT_BINARY_DIR}")
 
 add_executable (ConvertVtkToVtu src/vtkToVtu.cxx)
-
 target_link_libraries(ConvertVtkToVtu vtkIOXML vtkIOMPIParallel)
 
+add_executable(CheckVTKVersion CheckVTKVersion.cxx)
+if(VTK_LIBRARIES)
+  target_link_libraries(CheckVTKVersion ${VTK_LIBRARIES})
+else()
+  target_link_libraries(CheckVTKVersion vtkHybrid vtkWidgets)
+endif()
