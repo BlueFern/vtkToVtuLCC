@@ -22,8 +22,5 @@ add_executable (ConvertVtkToVtu src/vtkToVtu.cxx)
 target_link_libraries(ConvertVtkToVtu vtkIOXML vtkIOMPIParallel)
 
 add_executable(CheckVTKVersion src/CheckVTKVersion.cxx)
-if(VTK_LIBRARIES)
-  target_link_libraries(CheckVTKVersion ${VTK_LIBRARIES})
-else()
-  target_link_libraries(CheckVTKVersion vtkHybrid vtkWidgets)
-endif()
+target_link_libraries(CheckVTKVersion vtkHybrid vtkWidgets)
+
